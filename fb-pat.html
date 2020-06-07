@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Card</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+.patcard {
+
+
+    font-family: sans-serif;
+    font-size: 21px;
+    letter-spacing: 2.2px;
+    color: #47525E;
+}
+
+.cancel
+{
+   
+    font-family: sans-serif;
+    color: #434c4e;
+    background: #fffecb;
+    letter-spacing: 0.13em;
+
+}
+
+</style>
+
+
+</head>
+<body> 
+
+<div class="container" style="max-width: 360px;">
+      <!-- <div class="card ">
+      <div class="card-body text-center">
+        <a class="card-text stretched-link" onclick="submitOrder()">Some text inside the second card</a>
+      </div>
+    </div>   -->
+
+    
+   <!-- Working code for div change on card click   -->
+   <div id="nurse-att" style="display:none;">
+        
+
+        <div id ="12" class="card-columns m-5 pb-5">
+                <div class="card" style="background-color:#EFFFCC">
+                        
+                  <img class="card-img-top pt-5 " src="https://image.flaticon.com/icons/svg/3011/3011278.svg" alt="Card image" style="width: 5em; align-self: center;">
+                    <div class="card-body patcard">
+                        
+                            <!-- <div class="row m-2" style="align-items: center;"> -->
+                                    
+                                    
+                                        
+                                        
+                                        <p style="display: contents; white-space: pre; font-size: 26px; letter-spacing: 0em;">Nurse on the way</p></div>
+                                
+                        <!-- <p><img class="card-img pt-3" src="https://image.flaticon.com/icons/svg/3011/3011278.svg" alt="Card image" style="width: 5em; align-self: center;">
+                            Nurse on the way</p> -->
+
+                        <!-- </div> -->
+                </div>
+        
+                <div id="other-card" class="card cancel">
+                        <div class="card-body text-center p-1">
+
+                           <a id="myBtn" href="#" class="card-text stretched-link patcard" onclick="buttonClick()" >
+                            <i class="fa fa-remove"></i>
+                            
+                            Cancel</a>
+
+                        </div>
+                </div>
+
+
+        </div>         
+    
+</div>
+
+
+
+<!-- Start Wardboy Card change -->
+
+<div id="boy-att" style="display:none;">
+        <!-- <div id="other-card" class="card bg-warning">
+                <div class="card-body text-center">
+                  <p class="card-text">Some text inside the second card</p>
+                </div>
+              </div> -->
+
+        <div id ="31" class="card-columns m-5 pb-5">
+                <div class="card" style="background-color:#CAF8EE">
+                        
+                  <img class="card-img-top pt-5 " src="https://image.flaticon.com/icons/svg/3011/3011268.svg" alt="Card image" style="width: 5em; align-self: center;">
+                    <div class="card-body patcard">
+                        
+                            <!-- <div class="row m-2" style="align-items: center;"> -->
+                                    
+                                    
+                                        
+                                        
+                                        <p style="display: contents; white-space: pre; font-size: 26px; letter-spacing: 0em;">Boy on the way</p></div>
+                                
+                        <!-- <p><img class="card-img pt-3" src="https://image.flaticon.com/icons/svg/3011/3011278.svg" alt="Card image" style="width: 5em; align-self: center;">
+                            Nurse on the way</p> -->
+
+                        <!-- </div> -->
+                </div>
+        
+                <div id="other2-card" class="card cancel">
+                        <div class="card-body text-center p-1">
+
+                           <a id="myBtn3" href="#" class="card-text stretched-link patcard" onclick="buttonClick2()">
+                            <i class="fa fa-remove"></i>
+                            
+                            Cancel</a>
+
+                        </div>
+                </div>
+
+
+        </div>         
+    
+</div>
+
+<!-- End Wordboy Card change -->
+
+<!-- <button id="btnClick">Click me!</button> -->
+
+
+<div id ="home" class="card-columns m-5 pb-5">
+        <!-- <a href="www.google.com"> -->
+    <div class="card " style="background-color:#EFFFCC">
+     
+      <img class="card-img-top pt-3" src="https://image.flaticon.com/icons/svg/3011/3011278.svg" alt="Card image" style="width: 5em; align-self: center;">
+      <div class="card-body text-center">
+      <a id="nurse-card" href="#" class="card-text stretched-link patcard" onclick="submitOrder()" > Call Nurse</a>
+      <!-- </a> -->
+      
+      </div>
+      
+    </div>
+
+
+    <div class="card" style="background-color:#CAF8EE">
+    
+            <img class="card-img-top pt-3" src="https://image.flaticon.com/icons/svg/3011/3011268.svg" alt="Card image" style="width: 5em; align-self: center;">
+            <div class="card-body text-center">
+            <a id="boy-card" href="#" class="card-text stretched-link patcard" onclick="callBoy()"> Call Wardboy</a>
+            <!-- </a> -->
+            </div>
+      </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+    <!-- <button id="myBtn" onclick="buttonClick()">Click</button> -->
+   
+
+
+
+
+
+<script>
+
+var config = {
+    apiKey: "AIzaSyCsI4iG9i9SR3myP4YKQEDECEzwioL1l2E",
+            authDomain: "nurse-5777b.firebaseapp.com",
+            databaseURL: "https://nurse-5777b.firebaseio.com",
+            projectId: "nurse-5777b",
+            storageBucket: "nurse-5777b.appspot.com",
+            messagingSenderId: "494947680476",
+             appId: "1:494947680476:web:99cc06f1dac19538e3b419",
+            measurementId: "G-Q1JFH6QXR3"
+};
+
+
+
+firebase.initializeApp(config);
+
+// Firebase Database Reference and the child
+const dbRef = firebase.database().ref();
+const usersRef = dbRef.child('users');
+//const userRefchild = usersRef.child('204');
+var userID = "";
+var key = "";
+
+
+
+// Save a new recommendation to the database, using the input in the form
+var submitRequest = function (role) {
+
+  // Get input values from each of the form elements
+var name = "Soham";
+var id = "204";
+//var role = "nurse"
+var today = new Date();
+var stime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var attend = false;
+
+
+  // Push a new recommendation to the database using those values   //Changed usersRef to usersRefchild
+  usersRef.push({
+    "name": name,
+    "roomid": id,
+    "startTimeST": stime,
+    "endTimeST": "",
+    "attendStatus": attend,
+    "role": role
+  });
+
+};
+
+
+function buttonClick () {
+var w = document.getElementById("myBtn");
+w.setAttribute("userid", key);
+w.addEventListener("click",deleteButtonClicked);
+console.log("Cancelled");
+}
+
+
+function buttonClick2 () {
+var w = document.getElementById("myBtn3");
+w.setAttribute("userid", key);
+w.addEventListener("click",deleteButtonClicked);
+console.log("Cancelled2");
+}
+
+
+usersRef.on("value", snap => {
+
+
+  snap.forEach(childSnap => {
+
+    key = childSnap.key,
+    value = childSnap.val()
+   //console.log(key);
+
+  
+});
+
+})
+
+
+// firebase.database().ref('users').on('value',(snap)=>{
+//     console.log(snap.val());
+//   });
+
+
+function deleteButtonClicked(e) {
+
+e.stopPropagation();
+
+var userID = e.target.getAttribute("userid");
+
+const userRef = dbRef.child('users/' + userID+'/attendStatus');
+userRef.set(true);
+
+const endtime = dbRef.child('users/' + userID+'/endTimeST');
+var today = new Date();
+var etime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+endtime.set(etime);
+
+console.log("attended-204" + lastKey)
+
+}
+
+var lastKey
+function getKey() {
+    usersRef.once('value', function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childKey = childSnapshot.key;
+    var childData = childSnapshot.val();
+
+    if (!childData.attendStatus && childData.roomid == "204")
+    {
+     lastKey = childKey;
+    console.log(childKey);
+    console.log(childData.roomid);
+
+    }
+  });
+});
+
+
+}
+
+
+
+function submitOrder() {
+submitRequest('nurse');
+console.log("Called Nurse");
+getKey();
+
+}
+
+function callBoy() {
+submitRequest('wardboy');
+console.log("Called Boy")
+}
+
+
+
+$('#nurse-card').on('click',function(){
+    if($('#home').css('display')!='none'){
+    $('#nurse-att').show().siblings('div').hide();
+    }else if($('#nurse-att').css('display')!='none'){
+        $('#home').show().siblings('div').hide();
+    }
+});
+
+$('#myBtn').on('click',function(){
+    if($('#home').css('display')!='none'){
+    $('#2').show().siblings('div').hide();
+    }else if($('#2').css('display')!='none'){
+        $('#home').show().siblings('div').hide();
+    }
+});
+
+
+
+
+$('#boy-card').on('click',function(){
+    if($('#home').css('display')!='none'){
+    $('#boy-att').show().siblings('div').hide();
+    }else if($('#boy-att').css('display')!='none'){
+        $('#home').show().siblings('div').hide();
+    }
+});
+$('#myBtn3').on('click',function(){
+    if($('#home').css('display')!='none'){
+    $('#boy-att').show().siblings('div').hide();
+    }else if($('#boy-att').css('display')!='none'){
+        $('#home').show().siblings('div').hide();
+    }
+});
+
+
+</script>
+
+</body>
+</html>
