@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Card</title>
+  <title>Patient Portal</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -72,7 +72,7 @@
                 <div id="other-card" class="card cancel">
                         <div class="card-body text-center p-1">
 
-                           <a id="myBtn" href="#" class="card-text stretched-link patcard" onclick="buttonClick()" >
+                           <a id="myBtn" href="#" class="card-text stretched-link patcard" onclick="deleteButtonClicked()" >
                             <i class="fa fa-remove"></i>
                             
                             Cancel</a>
@@ -118,7 +118,7 @@
                 <div id="other2-card" class="card cancel">
                         <div class="card-body text-center p-1">
 
-                           <a id="myBtn3" href="#" class="card-text stretched-link patcard" onclick="buttonClick2()">
+                           <a id="myBtn3" href="#" class="card-text stretched-link patcard" onclick="deleteButtonClicked()">
                             <i class="fa fa-remove"></i>
                             
                             Cancel</a>
@@ -130,10 +130,6 @@
         </div>         
     
 </div>
-
-<!-- End Wordboy Card change -->
-
-<!-- <button id="btnClick">Click me!</button> -->
 
 
 <div id ="home" class="card-columns m-5 pb-5">
@@ -161,32 +157,7 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
-
-
-    <!-- <button id="myBtn" onclick="buttonClick()">Click</button> -->
-   
-
-
-
 
 
 <script>
@@ -211,23 +182,20 @@ const dbRef = firebase.database().ref();
 const usersRef = dbRef.child('users');
 //const userRefchild = usersRef.child('204');
 var userID = "";
-var key = "";
-
+let numberOfUsers = 1;
 
 
 // Save a new recommendation to the database, using the input in the form
 var submitRequest = function (role) {
 
-  // Get input values from each of the form elements
-var name = "Soham";
-var id = "204";
+var name = "User"+numberOfUsers;
+var id = numberOfUsers;
 //var role = "nurse"
 var today = new Date();
 var stime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 var attend = false;
 
 
-  // Push a new recommendation to the database using those values   //Changed usersRef to usersRefchild
   usersRef.push({
     "name": name,
     "roomid": id,
@@ -235,52 +203,21 @@ var attend = false;
     "endTimeST": "",
     "attendStatus": attend,
     "role": role
+  })
+  .then((snap) => {
+     userID = snap.key 
   });
 
 };
 
 
-function buttonClick () {
-var w = document.getElementById("myBtn");
-w.setAttribute("userid", key);
-w.addEventListener("click",deleteButtonClicked);
-console.log("Cancelled");
-}
-
-
-function buttonClick2 () {
-var w = document.getElementById("myBtn3");
-w.setAttribute("userid", key);
-w.addEventListener("click",deleteButtonClicked);
-console.log("Cancelled2");
-}
-
-
 usersRef.on("value", snap => {
-
-
-  snap.forEach(childSnap => {
-
-    key = childSnap.key,
-    value = childSnap.val()
-   //console.log(key);
-
-  
-});
-
+  numberOfUsers = snap.numChildren();
+  console.log(numberOfUsers)
 })
 
 
-// firebase.database().ref('users').on('value',(snap)=>{
-//     console.log(snap.val());
-//   });
-
-
-function deleteButtonClicked(e) {
-
-e.stopPropagation();
-
-var userID = e.target.getAttribute("userid");
+function deleteButtonClicked() {
 
 const userRef = dbRef.child('users/' + userID+'/attendStatus');
 userRef.set(true);
@@ -290,44 +227,19 @@ var today = new Date();
 var etime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 endtime.set(etime);
 
-console.log("attended-204" + lastKey)
 
 }
-
-var lastKey
-function getKey() {
-    usersRef.once('value', function(snapshot) {
-  snapshot.forEach(function(childSnapshot) {
-    var childKey = childSnapshot.key;
-    var childData = childSnapshot.val();
-
-    if (!childData.attendStatus && childData.roomid == "204")
-    {
-     lastKey = childKey;
-    console.log(childKey);
-    console.log(childData.roomid);
-
-    }
-  });
-});
-
-
-}
-
 
 
 function submitOrder() {
-submitRequest('nurse');
-console.log("Called Nurse");
-getKey();
-
+  submitRequest('nurse');
+  console.log("Called Nurse");
 }
 
 function callBoy() {
 submitRequest('wardboy');
 console.log("Called Boy")
 }
-
 
 
 $('#nurse-card').on('click',function(){
