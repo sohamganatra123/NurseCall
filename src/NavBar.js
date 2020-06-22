@@ -4,6 +4,10 @@ import './NavBar.css'
 
 class NavBar extends Component {
 
+  signOut(){
+
+  }
+  
   render() {
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-blue fixed-top">
@@ -16,7 +20,7 @@ class NavBar extends Component {
       </div>
       <button
         className="btn btn-secondary"
-        onClick={this.props.signOut.bind(this)}
+        onClick={this.signOut.bind(this)}
       >Sign out
       </button>
       </nav>

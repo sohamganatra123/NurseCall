@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import NavBar from './NavBar'
 import Dashboard from './Dashboard'
 import './SignedIn.css'
@@ -11,8 +11,10 @@ class SignedIn extends Component {
 
     return (
       <div className="row" style={{ paddingTop: "4rem"}}>
-      <NavBar signOut={this.signOut}/>
+      <NavBar/>
       <Switch>
+        
+        <Redirect exact from={`/`} to={`/dashboard`} />
         <Route
           path={`/dashboard`}
           render={
