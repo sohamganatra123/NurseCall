@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import './Dashboard.css'
 import firebase from 'firebase'
+import './Dashboard.css'
 
 class Dashboard extends Component {
 
@@ -19,8 +19,10 @@ class Dashboard extends Component {
   componentDidMount() {
     this.intervalId = setInterval(this.startTime, 1000);
     this.usersRef.on('value',(snapshot)=>{
+      let callList = snapshot.val()
       console.log(snapshot.val())
-      this.setState({callList: snapshot.val()})
+      let callCount = Object.keys(callList).length
+      this.setState({callList, callCount})
     })
   }
 
