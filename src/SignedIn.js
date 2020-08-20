@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import NavBar from './NavBar'
-import Dashboard from './Dashboard'
-import Patient from './Patient'
+import Dashboard from './Dashboard/Dashboard'
+import Patient from './Patient/Patient'
+import PatientCall from './Patient/PatientCall'
 import './SignedIn.css'
 
 
@@ -27,7 +28,7 @@ class SignedIn extends Component {
         <Route
           path={`/patient`}
           render={
-            routeProps => <Patient
+            routeProps => <PatientCall
             protocol={window.location.protocol}
             realm={window.location.origin.split('//')[1]}
             {...routeProps} />

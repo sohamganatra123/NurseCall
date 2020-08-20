@@ -19,8 +19,9 @@ class Dashboard extends Component {
   componentDidMount() {
     this.intervalId = setInterval(this.startTime, 1000);
     this.usersRef.on('value',(snapshot)=>{
-      let callList = snapshot.val()
+      let callList = snapshot.val() || [];
       console.log(snapshot.val())
+
       let callCount = Object.keys(callList).length
       this.setState({callList, callCount})
     })
@@ -51,7 +52,7 @@ class Dashboard extends Component {
     let callList = this.state.callList
     for(let key in callList){
       let cardClassName = "animated flash list-card"
-      if(callList[key].role==="nurse"){
+      if(callList[key].callType==="nurse"){
         cardClassName += " nursecard"
       } else {
         cardClassName += " wardcard"
@@ -61,7 +62,7 @@ class Dashboard extends Component {
           <td>{callList[key].name}</td>
           <td>{callList[key].room}</td>
           <td>
-            {callList[key].role==="nurse"?<img src="https://image.flaticon.com/icons/svg/3011/3011278.svg" alt="Nurse" style={{width: '42px'}}/>:''}
+            {callList[key].callType==="nurse"?<img src="https://image.flaticon.com/icons/svg/3011/3011278.svg" alt="Nurse" style={{width: '42px'}}/>:''}
           </td>
         </tr>
         htmlCallList.push(htmlCallDetails)
