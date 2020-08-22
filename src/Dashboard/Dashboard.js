@@ -12,7 +12,7 @@ class Dashboard extends Component {
       callList: {}
     }
     const dbRef = firebase.database().ref();
-    this.usersRef = dbRef.child('users').orderByChild('attendStatus').equalTo(false);
+    this.usersRef = dbRef.child('calls').orderByChild('attendStatus').equalTo(false);
     this.startTime = this.startTime.bind(this)
   }
 
